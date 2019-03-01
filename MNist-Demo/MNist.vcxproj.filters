@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스파일">
+      <UniqueIdentifier>{969c1cfc-0fd7-4922-971f-4aa24d08de43}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="소스헤더파일">
+      <UniqueIdentifier>{de0eed66-ee7f-4599-8ed3-de67456c904c}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="리소스파일">
+      <UniqueIdentifier>{a798d5b7-679c-4ea0-ab51-60bbde69c319}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="CNN">
+      <UniqueIdentifier>{cadf9e94-4a72-4db7-80a8-545c0cbc2579}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="대화창">
+      <UniqueIdentifier>{9742c8b5-18be-4150-983f-c4bde3dba555}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="기능추가">
+      <UniqueIdentifier>{ce5f8d2b-a7ab-47f5-8f0f-7726047ec49f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="대화창그림">
+      <UniqueIdentifier>{61fee480-69c1-43ab-a8fb-277dd3ca9940}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CNN설정">
+      <UniqueIdentifier>{726402e1-94d0-4a35-8982-98e019df71df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="참고">
+      <UniqueIdentifier>{ab3708c1-15cc-443d-9e2f-48e691ee5fda}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>소스파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MNist.cpp">
+      <Filter>소스파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MNistDoc.cpp">
+      <Filter>소스파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MNistView.cpp">
+      <Filter>소스파일</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>소스파일</Filter>
+    </ClCompile>
+    <ClCompile Include="NeuralNetwork.cpp">
+      <Filter>CNN</Filter>
+    </ClCompile>
+    <ClCompile Include="Preferences.cpp">
+      <Filter>CNN</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgBackpropParameters.cpp">
+      <Filter>대화창</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgCharacterImage.cpp">
+      <Filter>대화창</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgNeuralNet.cpp">
+      <Filter>대화창</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgTesting.cpp">
+      <Filter>대화창</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgTestingParameters.cpp">
+      <Filter>대화창</Filter>
+    </ClCompile>
+    <ClCompile Include="CntrItem.cpp">
+      <Filter>기능추가</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgResizeHelper.cpp">
+      <Filter>기능추가</Filter>
+    </ClCompile>
+    <ClCompile Include="TabbedControlPanel.cpp">
+      <Filter>기능추가</Filter>
+    </ClCompile>
+    <ClCompile Include="WndCharImage.cpp">
+      <Filter>대화창그림</Filter>
+    </ClCompile>
+    <ClCompile Include="WndGraphicMSE.cpp">
+      <Filter>대화창그림</Filter>
+    </ClCompile>
+    <ClCompile Include="WndNeuronViewer.cpp">
+      <Filter>대화창그림</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MainFrm.h">
+      <Filter>소스헤더파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MNist.h">
+      <Filter>소스헤더파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MNistDoc.h">
+      <Filter>소스헤더파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MNistView.h">
+      <Filter>소스헤더파일</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>소스헤더파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>리소스파일</Filter>
+    </ClInclude>
+    <ClInclude Include="NeuralNetwork.h">
+      <Filter>CNN</Filter>
+    </ClInclude>
+    <ClInclude Include="Preferences.h">
+      <Filter>CNN</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgBackpropParameters.h">
+      <Filter>대화창</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgCharacterImage.h">
+      <Filter>대화창</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgNeuralNet.h">
+      <Filter>대화창</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgTesting.h">
+      <Filter>대화창</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgTestingParameters.h">
+      <Filter>대화창</Filter>
+    </ClInclude>
+    <ClInclude Include="CntrItem.h">
+      <Filter>기능추가</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgResizeHelper.h">
+      <Filter>기능추가</Filter>
+    </ClInclude>
+    <ClInclude Include="TabbedControlPanel.h">
+      <Filter>기능추가</Filter>
+    </ClInclude>
+    <ClInclude Include="WndCharImage.h">
+      <Filter>대화창그림</Filter>
+    </ClInclude>
+    <ClInclude Include="WndGraphicMSE.h">
+      <Filter>대화창그림</Filter>
+    </ClInclude>
+    <ClInclude Include="WndNeuronViewer.h">
+      <Filter>대화창그림</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\MNist.ico">
+      <Filter>리소스파일</Filter>
+    </None>
+    <None Include="res\MNist.rc2">
+      <Filter>리소스파일</Filter>
+    </None>
+    <None Include="res\MNistDoc.ico">
+      <Filter>리소스파일</Filter>
+    </None>
+    <None Include="res\TabControlIcons-17x17-24bit.bmp">
+      <Filter>리소스파일</Filter>
+    </None>
+    <None Include="res\Toolbar.bmp">
+      <Filter>리소스파일</Filter>
+    </None>
+    <None Include="res\default-ini.ini">
+      <Filter>CNN설정</Filter>
+    </None>
+    <None Include="ReadMe.txt">
+      <Filter>참고</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MNist.rc">
+      <Filter>리소스파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="res\YourApp.exe.manifest">
+      <Filter>참고</Filter>
+    </Manifest>
+  </ItemGroup>
+</Project>
