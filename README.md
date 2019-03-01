@@ -98,18 +98,18 @@
 ![망구조](./images/NeuralNetDiagram.gif)
 
 이것은 각 변수가 의미하는 것이다:  
-<img src="https://latex.codecogs.com/svg.latex?\;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="2a" />  
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;x{^i _n}" title="xi_n" /> 는 **_n_** 단에서 **_i_**-th(번째) 뉴런의 나옴이다
 
-<img src="https://latex.codecogs.com/svg.latex?\;x{^j _{n-1}}" title="xj_n-1" /> 는 **_n_**-1 단에서 **_j_**-th(번째) 뉴런의 나옴이다
+![xin](./images/수식-xin.gif) 는 **_n_** 단에서 **_i_**-th(번째) 뉴런의 나옴이다
 
-<img src="https://latex.codecogs.com/svg.latex?\;x{^k _{n-1}}" title="xk_n-1" /> 는 **_n_**-1 단에서 **_k_**-th(번째) 뉴런의 나옴이다
+![xjn-1](./images/수식-xjn-1.gif) 는 **_n_**-1 단에서 **_j_**-th(번째) 뉴런의 나옴이다
 
-<img src="https://latex.codecogs.com/svg.latex?\;w{^{ij} _{n}}" title="wij_n" /> 는 가중값이다, **_n_**-1 단(즉 이전 단)에서 **_j_**-th(번째) 뉴런의 나옴에 적용하여 **_n_** 단 안의 **_i_**-th(번째) 뉴런에 적용하는. 다른 말로, 이전단 안의 **_j_**-th(번째) 뉴런 나옴과 현재단(**_n_** 단) 안의 **_i_**-th(번째) 뉴런까지의 가중값이다.
+![xkn-1](./images/수식-xkn-1.gif) 는 **_n_**-1 단에서 **_k_**-th(번째) 뉴런의 나옴이다
 
-<img src="https://latex.codecogs.com/svg.latex?\;w{^{ik} _{n}}" title="wik_n" /> 는 가중값이다, **_n_**-1 단에서 **_k_**-th(번째) 뉴런의 나옴에 적용하여 **_n_** 단 안의 **_i_**-th(번째) 뉴런에 적용하는.
+![wijn](./images/수식-wijn.gif) 는 가중값이다, **_n_**-1 단(즉 이전 단)에서 **_j_**-th(번째) 뉴런의 나옴에 적용하여 **_n_** 단 안의 **_i_**-th(번째) 뉴런에 적용하는. 다른 말로, 이전단 안의 **_j_**-th(번째) 뉴런 나옴과 현재단(**_n_** 단) 안의 **_i_**-th(번째) 뉴런까지의 가중값이다.
 
-<img src="https://latex.codecogs.com/svg.latex?\;x{^{i} _{n}} = F(y^i _n) = F \left(\sum^{C_{n-1}} _{l=0} w{^{il}_{n}} \cdot x{^l _{n-1}} \right)" title="xi_n" /> 는 일반적인 순방향-전달 방정식이다, 여기에서 **_F()_**는 활성함수다. 잠시후에 활성화 함수에 대해 더 자세히 설명할 것이다.
+![wikn](./images/수식-wikn.gif) 는 가중값이다, **_n_**-1 단에서 **_k_**-th(번째) 뉴런의 나옴에 적용하여 **_n_** 단 안의 **_i_**-th(번째) 뉴런에 적용하는.
+
+![fyin](./images/수식-fyin.gif) 는 일반적인 순방향-전달 방정식이다, 여기에서 **_F()_**는 활성함수다. 잠시후에 활성화 함수에 대해 더 자세히 설명할 것이다.
 
 이것을 어떻게 코드와 C++ 클래스로 변환하는가? 내가 본 방법은, 위의 도형을 4개의 다른 클래스개체로 구성된 신경망으로 제안한다: 단, 단 안의 뉴런, 한 단의 뉴런에서 다른 단의 뉴런으로 연결, 그리고 연결에 적용되는 가중값. 이러한 4개의 클래스는 코드에 반영되었다, 다섯번째 클래스(신경망 자신)와 함께 이것은 다른 모든 개체를 위한 그릇(container)역할을 한다 그리고 이것은 외부와 주요 접속기를 제공한다. 여기에 클래스 간단히 보기가 있다. 이 코드는 `std::vector`를 많이 사용하는 것을 알린다. 특히 `std::vector< double >`를:
 
@@ -271,7 +271,7 @@ void NeuralNetwork::Calculate(double* inputVector
 
 단 내에서 `Calculate()` 함수는, 단은 단 안에서 모든 뉴런을 통해 반복한다, 그리고 나옴뉴런 각각에 대해 앞서 주어진 순방향-전달 공식에 따라 계산된다, 즉
 
-<img src="https://latex.codecogs.com/svg.latex?\;x{^{i} _{n}} = F(y^i _n) = F \left(\sum ^{C_{n-1}} _{l=0} w{^{il}_{n}} \cdot x{^l _{n-1}} \right)" title="xi_n" />
+![fyin](./images/수식-fyin.gif)
 
 이 공식은 뉴런에 대해 모든 연결을 통해 반복하여 적용된다, 그리고 각 연결에 대해, 이전 단의 뉴런으로 부터 해당하는 가중값과 해당하는 나옴(출력)값을 얻는다:
 
@@ -321,18 +321,18 @@ void NNLayer::Calculate()
 
 좋은 활성화함수를 선택하는 것은 신경망 궁리의 중요한 부분이다. 포괄적으로 말해, 활성함수는 대칭이어야 한다, 그리고 신경망은 함수의 한계보다 낮은 값으로 벼림되어야 한다.
 
-활성화 함수로 절대로 사용해서는 안되는 함수 하나는 고전적인 시그모이드 함수다(또는 논리(logistic) 함수). <img src="https://latex.codecogs.com/svg.latex?\;F(y) = \frac{1} {1 + e^{-y}}" title="Fy" />로 정의된. 이것은 대칭이 아니기 때문에 절대로 사용해서는 안된다: 이 값은  증가하는 `x`에 대해 `+1`에 근접한다, 하지만 감소하는 `x`에 대해 이 값은 `0`에 근접한다(즉, 대칭이어야 하는 `-1`에 근접하지 않는다). 여기에서 논리함수를 언급한 이유는 신경망에서 사용을 권장하는 것은 웹상에 많은 글이 있다, 예를 들어, 위키피디아 에서 [시그모이드 함수](http://en.wikipedia.org/wiki/Sigmoid_function). 내 견해로는, 이것은 형편없는 권고이다 그리고 피해야 한다.
+활성화 함수로 절대로 사용해서는 안되는 함수 하나는 고전적인 시그모이드 함수다(또는 논리(logistic) 함수). ![fy](./images/수식-fy.gif) 로 정의된. 이것은 대칭이 아니기 때문에 절대로 사용해서는 안된다: 이 값은  증가하는 `x`에 대해 `+1`에 근접한다, 하지만 감소하는 `x`에 대해 이 값은 `0`에 근접한다(즉, 대칭이어야 하는 `-1`에 근접하지 않는다). 여기에서 논리함수를 언급한 이유는 신경망에서 사용을 권장하는 것은 웹상에 많은 글이 있다, 예를 들어, 위키피디아 에서 [시그모이드 함수](http://en.wikipedia.org/wiki/Sigmoid_function). 내 견해로는, 이것은 형편없는 권고이다 그리고 피해야 한다.
 
-활성함수에 대해 하나의 좋은 선택은 쌍곡선 탄젠트다, 또는 <img src="https://latex.codecogs.com/svg.latex?\;F(y) = tanh(y)" title="Fy" />. 이 함수는 좋은 선택이다. 왜냐하면 이것은 완전히 대칭이다, 다음 그래프에 보이는것 처럼. 만약 사용한다면,  그러면 신경망을 &pm;`1.0`. 대신에, 중간값을 선택한다, &pm;`0.8` 같은.
+활성함수에 대해 하나의 좋은 선택은 쌍곡선 탄젠트다, 또는 ![tanhy](./images/수식-tanhy.gif). 이 함수는 좋은 선택이다. 왜냐하면 이것은 완전히 대칭이다, 다음 그래프에 보이는것 처럼. 만약 사용한다면,  그러면 신경망을 &pm;`1.0`. 대신에, 중간값을 선택한다, &pm;`0.8` 같은.
 
 ![시그모이드](./images/HyperbolicTangentGraph.gif)
 
 쌍곡선 탄젠트가 좋은 선택인 또다른 이유는 이것의 미분결과를 얻기 쉽다는 것이다. 예, 미안합니다, 하지만 약간의 계산은 신경망에 필요하다. 뿐만 아니라 이것의 미분한 결과를 얻기 쉽다, 하지만 또한 미분한결과 값은  출력값의 항으로 표현될수 있다(즉, 사비(입력)값에 반대). 더 구체적으로, 그것을 가정하면:
 
-<img src="https://latex.codecogs.com/svg.latex?\;x = F(y) = tanh(y) = \frac{sinh(y)}{cosh(y)}" title="x" />, 여기에서(위의 표기법을 사용하여) y는 함수의 입력이다(뉴런의 활성화 값에 해당) 그리고 x는 뉴런의 출력이다.
-그런다음 <img src="https://latex.codecogs.com/svg.latex?\;\frac{dF}{dy} = \frac{d}{dy}(\frac{sinh(y)} {cosh(y)}) = \frac{cosh^2(y)-sinh^2(y)} {cosh^2(y)}" title="x" />  
-이것을 <img src="https://latex.codecogs.com/svg.latex?\;\frac{dF}{dy} = 1-tanh^2(y)" title="x" />로 간단히 한다  
-또는, <img src="https://latex.codecogs.com/svg.latex?\;x = tanh(y)" title="x" />이기 때문에, 그 결과는 <img src="https://latex.codecogs.com/svg.latex?\;\frac{dF}{dy} = 1-x^2" title="x" />이다. 이 결과는 주어진 함수의 출력만으로 **F()**의 미분값을 계산할수 있다는 것을 의미한다, 입력에 대한 아무런 지식 없이. 이 글에서, 우리는 활성함수의 미분을 **G(x)**라고 부른다.
+![xfy](./images/수식-xfy.gif), 여기에서(위의 표기법을 사용하여) y는 함수의 입력이다(뉴런의 활성화 값에 해당) 그리고 x는 뉴런의 출력이다.
+그런다음 ![dfdyddy](./images/수식-dfdyddy.gif)  
+이것을 ![dfdy1tanh](./images/수식-dfdy1tanh.gif)로 간단히 한다  
+또는, ![xtanh](./images/수식-xtanh.gif)이기 때문에, 그 결과는 ![dfdy1x2](./images/수식-dfdy1x2.gif)이다. 이 결과는 주어진 함수의 출력만으로 **F()**의 미분값을 계산할수 있다는 것을 의미한다, 입력에 대한 아무런 지식 없이. 이 글에서, 우리는 활성함수의 미분을 **G(x)**라고 부른다.
 
 코드에서 사용된 활성함수는 쌍곡선 탄젠트의 축척 판이다. 이것은 레쿤 박사의 글중 하나에서 추천한것을 기반으로 선택했다. 축척 이유는 함수가 &pm;`1.7159`사이에서 변하기 때문이다, 그리고 &pm;`1.0` 값으로 망 벼림을 가능하게 한다.
 
@@ -344,41 +344,41 @@ void NNLayer::Calculate()
 
 역전파는 현재 단의 주어진 출력은 이전단의 출력 오차를 결정할수 있는 방법을 제공한다. 그 절차는 반복적이다: 마지막 단에서 시작한다 그리고 마지막 단에 대한 가중값 변화를 계산한다. 그런 다음 이전 단의 출력에서 오차를 계산한다. 반복한다.
 
-역전파 방정식은 아래에 주어졌다. 방정식을 보여주는 나의 목적은 코드에서 찾을수 있도록 하는 것이다, 그리고 그것을 이해하도록. 예를 들어, 첫번째 방정식에 보이는 것은 **_n-th_** 단에서 활성화값 <img src="https://latex.codecogs.com/svg.latex?\;y^i" title="x" />에 대한 오차 <img src="https://latex.codecogs.com/svg.latex?\;E^P" title="x" />의 편미분을 계산하는 방법이다. 코드에서, `dErr_wrt_dYn[ ii ]`이름의 변수를 볼수 있다.
+역전파 방정식은 아래에 주어졌다. 방정식을 보여주는 나의 목적은 코드에서 찾을수 있도록 하는 것이다, 그리고 그것을 이해하도록. 예를 들어, 첫번째 방정식에 보이는 것은 **_n-th_** 단에서 활성화값 ![yi](./images/수식-yi.gif)에 대한 오차 ![EP](./images/수식-EP.gif)의 편미분을 계산하는 방법이다. 코드에서, `dErr_wrt_dYn[ ii ]`이름의 변수를 볼수 있다.
 
 하나의 입력이미지 패턴이기 때문에 마지막 단 뉴런출력에 대한 오차의 편미분을 계산함으로써 절차를 시작한다. 하나의 패턴이기 때문에 오차는 다음과 같이 계산된다:
 
-<img src="https://latex.codecogs.com/svg.latex?\;E^P_n = \frac{1}{2} \cdot \sum \left( x^i_n - T^i_n \right)^2 " title="x" /> 방정식(1)
+![EPn12sum](./images/수식-EPn12sum.gif) 방정식(1)
 
 여기에서:
 
-<img src="https://latex.codecogs.com/svg.latex?\;E^P_n" title="x" />는 마지막 단 **_n_** 에서 하나의 패턴 **_P_** 에 대한 **오차**다;
+![EPN](./images/수식-EPn.gif)는 마지막 단 **_n_** 에서 하나의 패턴 **_P_** 에 대한 **오차**다;
 
-<img src="https://latex.codecogs.com/svg.latex?\;T^i_n" title="x" />는 마지막 단에서 **목표출력**이다(즉, 마지막 단에서 원하는 출력); 그리고
+![Tin](./images/수식-Tin.gif)는 마지막 단에서 **목표출력**이다(즉, 마지막 단에서 원하는 출력); 그리고
 
-<img src="https://latex.codecogs.com/svg.latex?\;x^i_n" title="x" />는 마지막 단에서 **실제출력**값이다.
+![xin](./images/수식-xin.gif)는 마지막 단에서 **실제출력**값이다.
 
 주어진 방정식(1), 다음에 산출된 편미분을 취한다:
 
-<img src="https://latex.codecogs.com/svg.latex?\;\frac{\partial E^P_n}{\partial x^i_n} = x^i_n - T^i_n" title="x" /> 방정식(2)
+![dEPndxin](./images/수식-dEPndxin.gif) 방정식(2)
 
 방정식(2)는 역전파 절차를 위한 시작값을 제공한다. 우리는 미분한결과 값 수치를 계산하기 위해 방정식(2)의 오른쪽에 있는 양에 대한 수치 값을 사용한다. 미분한결과 값 수치를 사용하여, 가중값 변화에 대한 수치값을 계산한다, 다음 두개의 방정식 (3)과 (4)를 적용하여:
 
-<img src="https://latex.codecogs.com/svg.latex?\;\frac{\partial E^P_n}{\partial y^i_n} = G(x^i_n) \cdot \frac{\partial E^P_n}{\partial x^i_n}" title="x" /> 방정식(3)
+![dEPndyin](./images/수식-dEPndyin.gif) 방정식(3)
 
-여기에서 <img src="https://latex.codecogs.com/svg.latex?\;G(x^i_n)" title="x" />는 활성함수의 편미분이다.
+여기에서 ![Gxin](./images/수식-Gxin.gif)는 활성함수의 편미분이다.
 
-<img src="https://latex.codecogs.com/svg.latex?\;\frac{\partial E^P_n}{\partial w^{ij}_n} = x^i_{n-1} \cdot \frac{\partial E^P_n}{\partial y^i_n}" title="x" /> 방정식(4)
+![dEPndwijn](./images/수식-dEPndwijn.gif) 방정식(4)
 
 그런다음, 방정식(2)를 다시 사용한다 그리고 방정식(3)도, 이전단에 대한 오차를 계산한다, 다음의 방정식(5)를 사용하여:
 
-<img src="https://latex.codecogs.com/svg.latex?\;\frac{\partial E^P_{n-1}}{\partial x^{k}_{n-1}} = \sum_i w^{ik}_{n} \cdot \frac{\partial E^P_n}{\partial y^i_n}" title="x" /> 방정식(5)
+![dEPn-1dxkn-1](./images/수식-dEPn-1dxkn-1.gif) 방정식(5)
 
 방정식(5)에서 얻은 값은 바로 전단의 계산을 위한 시작값으로 사용된다. **_이것은 역전파를 이해하는데 있어 가장 중요한 지점중 하나이다._** 다른 말로, 방정식(5)에서 구한 수치값을 취한다, 그리고 이것으로 바로 전단을 위해 방정식(3), (4)와 (5)를 반복하여 사용한다.
 
 한편, 방정식(4)의 값은 현재단 n에서 가중값을 얼마나 변경해야 하는지 알려준다, 이것은 대규모 훈련(벼림) 목적의 전부다. 특히, 공식에 의해 각각의 가중값의 값을 갱신한다:
 
-<img src="https://latex.codecogs.com/svg.latex?\;(w^{ij}_{n})_{new} = (w^{ij}_{n})_{old} - eta \cdot \left ( \frac{\partial E^P_n}{\partial w^{ij}_n} \right )" title="x" /> 방정식(6)
+![wijnnew](./images/수식-wijnnew.gif) 방정식(6)
 
 여기에서 eta는 "학습속도(learning rate)"다, 일반적으로 벼림하는 동안 `0.0005` 같은 작은 수로 점차적으로 감소한다.
 
