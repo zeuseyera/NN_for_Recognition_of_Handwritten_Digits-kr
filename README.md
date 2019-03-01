@@ -97,7 +97,7 @@
 
 ![망구조](./images/NeuralNetDiagram.gif)
 
-이것은 각 변수가 의미하는 것이다:
+이것은 각 변수가 의미하는 것이다:  
 <img src="https://latex.codecogs.com/svg.latex?\;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="2a" />  
 <img src="https://latex.codecogs.com/svg.latex?\;x{^i _n}" title="xi_n" /> 는 **_n_** 단에서 **_i_**-th(번째) 뉴런의 나옴이다
 
