@@ -99,7 +99,7 @@
 
 이것은 각 변수가 의미하는 것이다:  
 <img src="https://latex.codecogs.com/svg.latex?\;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="2a" />  
-<img src="https://latex.codecogs.com/svg.latex?\;x{^i _n}" title="xi_n" /> 는 **_n_** 단에서 **_i_**-th(번째) 뉴런의 나옴이다
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;x{^i _n}" title="xi_n" /> 는 **_n_** 단에서 **_i_**-th(번째) 뉴런의 나옴이다
 
 <img src="https://latex.codecogs.com/svg.latex?\;x{^j _{n-1}}" title="xj_n-1" /> 는 **_n_**-1 단에서 **_j_**-th(번째) 뉴런의 나옴이다
 
